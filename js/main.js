@@ -5,9 +5,32 @@ function login(){
     let password = document.getElementById("password").value 
 
     if(username == "admin" && password == "12345"){
-        window.location = "indexPrepro.html"        
+        swal.fire({
+            title: `${username} ` ,
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+              },
+              hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+              },
+            Text: "Campo obligatorio",
+            icon: "success",
+            timer: 20000
+        })
+        // window.location = "indexPrepro.html"        
     }else{
-        alert("login falled")
+        swal.fire({
+            title: `${username}` ,
+            Text:"Denegado",
+                        showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+              },
+              hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+              },
+            icon:"error",
+            confirmButtonText:"confirmar"
+        })
     }
 }
     
