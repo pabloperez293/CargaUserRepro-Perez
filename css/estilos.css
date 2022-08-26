@@ -1,0 +1,127 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(27,211,162,1) 24%, rgba(0,212,255,1) 79%);
+}
+form{
+    display: flex;
+    flex-direction: column;
+    background: #424558;
+    text-align: center;
+    padding: 15px 20px;
+    box-shadow: 2px 2px 3px black;
+    opacity: 0.9;
+    border-radius: 10%;
+}
+/* imagen de flow */
+.imgFlow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 200px;
+}
+img{
+    border-radius: 50%;
+    max-width: 100%;
+    max-height: 100%;
+    margin-bottom: 10px;
+}
+img:hover{
+    transform: rotate(20deg);
+}
+.titulo{
+    color: #1bd3a2;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+.form-label{
+    color: #1bd3a2;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.fa-solid{
+    font-size: 20px;
+    margin-right: 10px;
+    color: #1bd3a2;
+}
+input{
+    outline: none;
+    border: none;
+    color: #1bd3a2;
+    background-color: #424558;
+    border-bottom: solid 1px #1bd3a2;
+    padding: 0 5px;
+    font-size: 18px;
+}
+.form-label::placeholder{
+    color: rgba(37, 37, 37, 0.7);
+}
+.link{
+    color: #1bd3a2;
+    margin: 15px;
+}
+.btn{
+    color: #1bd3a2;
+    border: none;
+    border-radius: 20%;
+    background-color: #424558;
+    cursor: pointer;
+    padding: 10px 15px;
+    font-size: 20px;
+}
+
+/* ---------------------------------------------------------------------------------------- */
+
+/* Estilos del reproductor */
+.title{
+    color: #1bd3a2;
+}
+/* card */
+.player{
+    background-image: linear-gradient(black , grey);
+    border-radius: 50%;
+    box-shadow: 2px 2px 3px black;
+}
+.fondo{
+    background-color: rgb(63, 63, 63);
+}
+
+/* controles */
+.controles{
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.controles button{
+    background-color: transparent;
+    border: none;
+    color: #1bd3a2;
+}
+
+/* lista  */
+.songs{
+    margin: 2px;
+    list-style: none;
+}
+.songs li{
+    margin-bottom: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #1bd3a2;
+}
+.songs li:hover{
+    background-color: rgb(139, 144, 150);
+    border-radius: 10%;
+}
