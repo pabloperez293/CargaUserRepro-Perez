@@ -49,3 +49,62 @@ document.addEventListener("DOMContentLoaded", () =>{
 
 
 })
+
+
+// -----------------------------------------------------------
+
+// Utilizando fetch 
+ 
+// Declaramos variables 
+const form = document.getElementById("songSearch")
+const main = document.getElementById("main")
+const artist = document.getElementById(".artist")
+const song = document.getElementById(".song")
+
+// simbolo dolar hace referencia al dom 
+     form.addEventListener("submit", async e => {
+        e.preventDefault()
+
+        try{
+// Fuerzo a que sea tanto en may como min la busqueda con tolowercase
+            let artist = e.target.artist.value.toLowerCase()
+            song = e.target.song.value.toLowerCase()
+// definimos variables para que se cuando se concatene correctamente 
+            let artistTemplate = ""
+            let songTemplate = ""
+            artistApi = `https://www.theaudiodb.com/api/v1/json/2/search.php?s=${artist}`
+            songApi = `https://api.lyrics.ovh/v1/${artist}/${song}`
+            artistFetch = fetch(artistApi)
+            songFetch = fetch(songApi)
+// Con esto hago que salga primero las peticiones que primero deben responder
+            [artistRes, songRes]= await Promise.all([artistFetch,songFetch])
+
+            artistData = await artistRes.json()
+            songData = await songData.json()
+
+            // console.log(artistRes, songRes)
+            console.log(artistData, songData)
+
+            if( artistData.artist === null){
+                artistTemplate = `<h2>No exite ${artist}</h2>`
+            }else{
+                let artist = artistData.artist [0]
+                artistTemplate =` <h2>${artist.strArtist}</h2>
+                <img src="${artist.strArtist}" alt="${artist.strArtist}">
+                <p>
+                ${artist.intBornYear} - ${(artist.intDiedYear || "Presente")}</p>
+                <p>${artist.strCountry}</p>
+                <p>${artist.strGenre} - ${artist.strStyle}</p>
+                <a href=":http://${artist.strWebsite}" target="_blank"> Pagina web</a>
+                <p>${artist.strBiographyEN}</p>
+                `
+            }
+
+            artist.innerHTML = artistTemplate
+    
+        }catch(err){
+            console.log(err)
+            let mensaje = err.statusText || "Error"
+            error.innerHTML = `<p>Error ${err.status}: ${mensaje}</p>`
+        }
+    })
