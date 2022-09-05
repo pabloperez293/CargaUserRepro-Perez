@@ -57,9 +57,10 @@ document.addEventListener("DOMContentLoaded", () =>{
  
 // Declaramos variables 
 const form = document.getElementById("songSearch")
-const main = document.getElementById("main")
-const artist = document.getElementById(".artist")
-const song = document.getElementById(".song")
+const main = document.querySelector("main")
+const artist = document.querySelector(".artist")
+const tema = document.querySelector(".tema")
+const error = document.querySelector(".error")
 
 // simbolo dolar hace referencia al dom 
      form.addEventListener("submit", async e => {
@@ -68,22 +69,22 @@ const song = document.getElementById(".song")
         try{
 // Fuerzo a que sea tanto en may como min la busqueda con tolowercase
             let artist = e.target.artist.value.toLowerCase()
-            song = e.target.song.value.toLowerCase()
+            tema = e.target.tema.value.toLowerCase()
 // definimos variables para que se cuando se concatene correctamente 
             let artistTemplate = ""
-            let songTemplate = ""
+            let temaTemplate = ""
             artistApi = `https://www.theaudiodb.com/api/v1/json/2/search.php?s=${artist}`
-            songApi = `https://api.lyrics.ovh/v1/${artist}/${song}`
+            temaApi = `https://api.lyrics.ovh/v1/${artist}/${tema}`
             artistFetch = fetch(artistApi)
-            songFetch = fetch(songApi)
+            temaFetch = fetch(temaApi)
 // Con esto hago que salga primero las peticiones que primero deben responder
-            [artistRes, songRes]= await Promise.all([artistFetch,songFetch])
+            [artistRes, temaRes]= await Promise.all([artistFetch,temaFetch])
 
-            artistData = await artistRes.json()
-            songData = await songData.json()
+            artistData = await artistRes.json(  )
+            temaData = await temaRes.json()
 
             // console.log(artistRes, songRes)
-            console.log(artistData, songData)
+            console.log(artistData, temaData)
 
             if( artistData.artist === null){
                 artistTemplate = `<h2>No exite ${artist}</h2>`
